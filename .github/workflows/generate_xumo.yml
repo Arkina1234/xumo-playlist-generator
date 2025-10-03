@@ -48,6 +48,7 @@ jobs:
           echo "--- Python Script Finished ---"
 
           echo "--- Workspace contents AFTER script ---"
+          gzip -dc < playlists/xumo_epg.xml.gz > playlists/xumo_epg.xml
           ls -la
 
           echo "--- 'playlists' dir contents AFTER script ---"
@@ -69,7 +70,11 @@ jobs:
             echo "WARNING: playlists/xumo_epg.xml.gz MISSING!"
           fi
 
-          gzip -d playlists/xumo_epg.xml.gz -C playlists/xumo_epg.xml
+          if [ -f "playlists/xumo_epg.xml" ]; then
+            echo "INFO: playlists/xumo_epg.xml EXISTS."
+          else
+            echo "WARNING: playlists/xumo_epg.xml MISSING!"
+          fi
 
       # Step 5: Commit and push the changes *only if* the scraper step found the playlist file
       - name: Commit and Push Changes
