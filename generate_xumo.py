@@ -41,7 +41,7 @@ HOURS_TO_FETCH = 24
 API_DELAY_SECONDS = 0.10
 OUTPUT_DIR = "playlists"
 PLAYLIST_FILENAME = "xumo_playlist.m3u"
-EPG_FILENAME = "xumo_epg.xml"
+EPG_FILENAME = "xumo_epg.xml.gz"
 REQUEST_TIMEOUT = 45
 
 # !!! GitHub Repo Info !!!
