@@ -63,10 +63,10 @@ jobs:
             exit 0
           fi
 
-          if [ -f "playlists/xumo_epg.xml.gz" ]; then
-            echo "INFO: playlists/xumo_epg.xml.gz EXISTS."
+          if [ -f "playlists/xumo_epg.xml" ]; then
+            echo "INFO: playlists/xumo_epg.xml EXISTS."
           else
-            echo "WARNING: playlists/xumo_epg.xml.gz MISSING!"
+            echo "WARNING: playlists/xumo_epg.xml MISSING!"
           fi
 
       # Step 5: Commit and push the changes *only if* the scraper step found the playlist file
@@ -82,7 +82,7 @@ jobs:
 
           # Check if git *thinks* there are changes before forcing the add
           # This is just for logging comparison
-          if git status --porcelain playlists/xumo_playlist.m3u playlists/xumo_epg.xml.gz | grep -E '^[ AM]'; then
+          if git status --porcelain playlists/xumo_playlist.m3u playlists/xumo_epg.xml | grep -E '^[ AM]'; then
              echo "INFO: Git status detected changes before add."
           else
              echo "INFO: Git status detected NO changes before add. Forcing add to test .gitignore..."
@@ -90,7 +90,7 @@ jobs:
 
           # --- MODIFICATION HERE: Use --force ---
           echo "--- Attempting: git add --force playlists/... ---"
-          git add --force playlists/xumo_playlist.m3u playlists/xumo_epg.xml.gz
+          git add --force playlists/xumo_playlist.m3u playlists/xumo_epg.xml
 
           echo "--- Running git status after add --force ---"
           git status
