@@ -47,8 +47,10 @@ jobs:
 
           echo "--- Python Script Finished ---"
 
-          echo "--- Workspace contents AFTER script ---"
+          echo "--- Decompressing EPG file ---"
           gzip -dc < playlists/xumo_epg.xml.gz > playlists/xumo_epg.xml
+
+          echo "--- Workspace contents AFTER script ---"
           ls -la
 
           echo "--- 'playlists' dir contents AFTER script ---"
